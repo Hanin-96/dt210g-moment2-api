@@ -18,6 +18,7 @@ const init = async () => {
     const server = Hapi.server({
         port: process.env.PORT || 3000,
         //host: '0.0.0.0',
+        host: "localhost",
         routes: {
             cors: {
                 origin: ['https://localhost:3000'], 
@@ -29,7 +30,7 @@ const init = async () => {
      databaseConnection();
 
     //Routes
-    server.route(todoRoute);
+    //server.route(todoRoute);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

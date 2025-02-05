@@ -1,5 +1,4 @@
 //Initierar Mongoose
-const { string, required } = require('joi');
 const Mongoose = require('mongoose');
 
 //Model schema över vad som ska lagras i todo
@@ -26,5 +25,10 @@ const todoSchema = new Mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
 })
+
+//Skapar upp Todo tabell
+const Todo = Mongoose.model("todo", todoSchema);
+
+//Export
+module.exports = Todo;
