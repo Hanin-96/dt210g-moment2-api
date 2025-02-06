@@ -13,6 +13,15 @@ const todoRouteArr = [
         //Lagrar en ny todo
         method: 'POST',
         path: '/todo',
+        options: {
+            validate: {
+                payload: Joi.object( {
+                    title: Joi.string().min(2).required(),
+                    description: Joi.string().min(2).max(150).required(),
+                    status: Joi.string().required()
+                })
+            }
+        },
         handler: todoController.postTodo
     },
     {
@@ -25,6 +34,15 @@ const todoRouteArr = [
         //Uppdaterar en todo
         method: 'PUT',
         path: '/update/todo/{id}',
+        options: {
+            validate: {
+                payload: Joi.object( {
+                    title: Joi.string().min(2).required(),
+                    description: Joi.string().min(2).max(150).required(),
+                    status: Joi.string().required()
+                })
+            }
+        },
         handler: todoController.updateTodo
     }
 ]
