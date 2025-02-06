@@ -7,7 +7,7 @@ const Hapi = require('@hapi/hapi');
 require("dotenv").config();
 
 //Hämtar todo route
-const todoRoute = require('./routes/todo.route');
+const todoRoutes = require('./routes/todo.route');
 
 //Hämtar databas koppling
 const databaseConnection = require('./database/todo.database');
@@ -16,12 +16,12 @@ const init = async () => {
 
     //Server
     const server = Hapi.server({
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 5000,
         //host: '0.0.0.0',
-        host: "localhost",
+        host: "localhost" || '0.0.0.0',
         routes: {
             cors: {
-                origin: ['https://localhost:3000'], 
+                origin: ['*'], 
             }
         }
     });
@@ -30,7 +30,7 @@ const init = async () => {
      databaseConnection();
 
     //Routes
-    //server.route(todoRoute);
+    server.route(todoRoutes);
 
     await server.start();
     console.log('Server running on %s', server.info.uri);

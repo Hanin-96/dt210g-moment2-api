@@ -1,38 +1,33 @@
 const Joi = require("joi");
+const todoController = require("../controllers/todo.controller")
 
 //Alla routes
-const todoArr = [
+const todoRouteArr = [
     {
         //Hämtar alla todos
         method: 'GET',
         path: '/todos',
-        handler: (request, h) => {
-            return 'svar';
-        }
+        handler: todoController.getTodos
     },
     {
-        //Lagrar ny todo
+        //Lagrar en ny todo
         method: 'POST',
         path: '/todo',
-        handler: (request, h) => {
-            return 'svar';
-        }
+        handler: todoController.postTodo
     },
     {
-        //Raderar todo
+        //Raderar en todo
         method: 'DELETE',
         path: '/delete/todo/{id}',
-        handler: (request, h) => {
-            return 'svar';
-        }
+        handler: todoController.deleteTodo
     },
     {
-        //Uppdaterar todo
+        //Uppdaterar en todo
         method: 'PUT',
         path: '/update/todo/{id}',
-        handler: (request, h) => {
-            return 'svar';
-        }
+        handler: todoController.updateTodo
     }
-
 ]
+
+//Exporterar route array
+module.exports = todoRouteArr;
