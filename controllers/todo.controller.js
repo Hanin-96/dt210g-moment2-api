@@ -61,12 +61,12 @@ exports.updateTodo = async (request, h) => {
             request.payload,
             { new: true }
         );
-        /*
+        
         return h.response({
             message: "Följande todo är uppdaterad",
             updatedTodo: updateTodoEl
         }).code(200);
-        */
+        
     }
     catch (error) {
         return h.response({
