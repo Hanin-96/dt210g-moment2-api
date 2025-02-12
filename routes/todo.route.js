@@ -37,7 +37,7 @@ const todoRouteArr = [
         options: {
             validate: {
                 payload: Joi.object( {
-                    title: Joi.string().min(2).required(),
+                    title: Joi.string().min(2),
                     description: Joi.string().max(200),
                     status: Joi.string().required()
                 })
